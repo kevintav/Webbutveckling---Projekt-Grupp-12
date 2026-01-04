@@ -1,0 +1,15 @@
+from fastapi import APIRouter, Query
+from backend.services.jobs_service import fetch_jobs
+
+router = APIRouter()
+
+@router.get("/search")
+def search(
+        q: str = Query(..., description="Job title"),
+        region: str = Query(..., description="Region")
+):
+
+    # Search endpoint for job listings
+    # Returns mock data for now
+
+    return fetch_jobs(q, region)
