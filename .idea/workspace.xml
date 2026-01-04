@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Created root gitignore file to hide environment and temp files from git">
-      <change afterPath="$PROJECT_DIR$/backend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/api/search.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/salary_service.py" afterDir="false" />
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Created initial file structure with clear separation of concern. main.py is the application entry point, search is the api interface layer and services/ contain the api files for calling both apis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +81,7 @@
       <workItem from="1766748683552" duration="1328000" />
       <workItem from="1766751759496" duration="601000" />
       <workItem from="1767116201860" duration="602000" />
-      <workItem from="1767532453751" duration="2883000" />
+      <workItem from="1767532453751" duration="3564000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -129,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767533794012</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created initial file structure with clear separation of concern. main.py is the application entry point, search is the api interface layer and services/ contain the api files for calling both apis">
+      <option name="closed" value="true" />
+      <created>1767535714541</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767535714541</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +166,7 @@
     <MESSAGE value="Startup code 1.2" />
     <MESSAGE value="Startup code 1.4" />
     <MESSAGE value="Created root gitignore file to hide environment and temp files from git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created root gitignore file to hide environment and temp files from git" />
+    <MESSAGE value="Created initial file structure with clear separation of concern. main.py is the application entry point, search is the api interface layer and services/ contain the api files for calling both apis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created initial file structure with clear separation of concern. main.py is the application entry point, search is the api interface layer and services/ contain the api files for calling both apis" />
   </component>
 </project>
