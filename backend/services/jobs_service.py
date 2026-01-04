@@ -2,10 +2,10 @@ import requests
 
 JOBSEARCH_API_URL = "https://jobsearch.api.jobtechdev.se/search"
 
-def fetch_jobs(query: str, region: str):
+def fetch_jobs(query: str, municipality: str):
     params = {
         "q": query,
-        "region": region,
+        "region": municipality,
         "limit": 10
     }
 
@@ -17,11 +17,14 @@ def fetch_jobs(query: str, region: str):
 
     jobs = []
 
-    for job in data.get("jobs", []):
+    for job in data.get("hits", []):
         jobs.append({
             "title": job.get("headline"),
             "employer": job.get("employer", {}).get("name"),
-            "location": job.get("workplace_address", {}).get("municipality"),
+            "location": {
+                    "municipality": job.get("workplace_address", {}).get("municipality"),
+                    "region": job.get("workplace_address", {}).get("region"),
+                },
             "ssyk": job.get("occupation", {}).get("concept_id"),
         })
 

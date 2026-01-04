@@ -6,10 +6,21 @@ router = APIRouter()
 @router.get("/search")
 def search(
         q: str = Query(..., description="Job title"),
-        region: str = Query(..., description="Region")
+        municipality: str = Query(..., description="Municipality")
 ):
 
-    # Search endpoint for job listings
-    # Returns mock data for now
+    REGION_MAP = {
+        "Skåne": "CaRE_1nn_cSU",
+        "Stockholm": "oDpK_oZ2_WYt",
+        "Västra Götalands": "zdoY_6u5_Krt",
+        "Uppsala": "zBon_eET_fFU",
+        "Norrbotten": "9hXe_F4g_eTG",
+        "Jönköpings": "MtbE_xWT_eMi",
+        "Västmanlands": "G6DV_fKE_Viz",
+    }
 
-    return fetch_jobs(q, region)
+    region_id = REGION_MAP.get(municipality)
+
+    return fetch_jobs(q, region_id)
+
+
