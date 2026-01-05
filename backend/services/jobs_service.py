@@ -32,10 +32,21 @@ def fetch_jobs(query: str, municipality: str):
             "title": job.get("headline"),
             "employer": job.get("employer", {}).get("name"),
             "location": {
-                    "municipality": job.get("workplace_address", {}).get("municipality"),
-                    "region": job.get("workplace_address", {}).get("region"),
-                },
+                "municipality": job.get("workplace_address", {}).get("municipality"),
+                "region": job.get("workplace_address", {}).get("region")
+            },
+            "logo_url": job.get("logo_url"),
+            "webpage_url": job.get("webpage_url"),
+            "scope_of_work": {
+                "min": job.get("scope_of_work", {}).get("min"),
+                "max": job.get("scope_of_work", {}).get("max")
+            },
             "ssyk": job.get("occupation", {}).get("concept_id"),
+            "timestamp": job.get("timestamp"),
+            "employment_type": {
+                "concept_id": job.get("employment_type", {}).get("concept_id"),
+                "label": job.get("employment_type", {}).get("label")
+            }
         })
 
     return jobs
