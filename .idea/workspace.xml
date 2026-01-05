@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="">
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Added more data to be requested from the API, such as UX items and timestamps.">
+      <change afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/api/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/salary_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/salary_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +65,7 @@
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "git-widget-placeholder": "master",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.sync",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -86,7 +90,7 @@
       <workItem from="1767116201860" duration="602000" />
       <workItem from="1767532453751" duration="9384000" />
       <workItem from="1767548846949" duration="599000" />
-      <workItem from="1767620914729" duration="2380000" />
+      <workItem from="1767620914729" duration="5671000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -168,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767542077901</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added more data to be requested from the API, such as UX items and timestamps.">
+      <option name="closed" value="true" />
+      <created>1767623355060</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1767623355060</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +220,7 @@
     <MESSAGE value="Added search router through main.py, created http request function within the jobs_service.py and added the function to search.py as to be able to correct get JSON data on job listing and then display through search endpoint" />
     <MESSAGE value="Job searching function works, can search with job keywords and municipality e.g Skåne, Uppsala, Norrbotten etc" />
     <MESSAGE value="Made changes to furthur seperate concern, moved REGION_MAP to jobs_service.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made changes to furthur seperate concern, moved REGION_MAP to jobs_service.py" />
+    <MESSAGE value="Added more data to be requested from the API, such as UX items and timestamps." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more data to be requested from the API, such as UX items and timestamps." />
   </component>
 </project>
