@@ -26,8 +26,6 @@ def fetch_jobs(query: str, municipality: str):
 
     data = response.json()
 
-    jobs = []
-
     return [
         {
             "title": job.get("headline"),

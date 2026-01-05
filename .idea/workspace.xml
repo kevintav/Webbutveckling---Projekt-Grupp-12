@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched">
-      <change afterPath="$PROJECT_DIR$/backend/TEST.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/ssyk_map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/api/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/combined_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/salary_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/salary_service.py" afterDir="false" />
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Reworked the salary_service.py completely, worked out how PXWEB V2 works and found the correct tabell to use. /search/combined now retrieves and combines data form both APIs">
+      <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +89,7 @@
       <workItem from="1767116201860" duration="602000" />
       <workItem from="1767532453751" duration="9384000" />
       <workItem from="1767548846949" duration="599000" />
-      <workItem from="1767620914729" duration="12156000" />
+      <workItem from="1767620914729" duration="12573000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -192,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767626839599</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Reworked the salary_service.py completely, worked out how PXWEB V2 works and found the correct tabell to use. /search/combined now retrieves and combines data form both APIs">
+      <option name="closed" value="true" />
+      <created>1767633199151</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1767633199151</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +237,8 @@
     <MESSAGE value="Made changes to furthur seperate concern, moved REGION_MAP to jobs_service.py" />
     <MESSAGE value="Added more data to be requested from the API, such as UX items and timestamps." />
     <MESSAGE value="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched" />
+    <MESSAGE value="Reworked the salary_service.py completely, worked out how PXWEB V2 works and found the correct tabell to use. /search/combined now retrieves and combines data form both APIs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reworked the salary_service.py completely, worked out how PXWEB V2 works and found the correct tabell to use. /search/combined now retrieves and combines data form both APIs" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$main.coverage" NAME="main Coverage Results" MODIFIED="1767628368861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
