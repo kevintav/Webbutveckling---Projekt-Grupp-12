@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Added more data to be requested from the API, such as UX items and timestamps.">
-      <change afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched">
+      <change afterPath="$PROJECT_DIR$/backend/TEST.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/ssyk_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/api/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/api/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/combined_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/salary_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/salary_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +59,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.TEST.executor": "Run",
+    "Python.combined_service.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.salary_service.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
@@ -90,7 +94,7 @@
       <workItem from="1767116201860" duration="602000" />
       <workItem from="1767532453751" duration="9384000" />
       <workItem from="1767548846949" duration="599000" />
-      <workItem from="1767620914729" duration="5671000" />
+      <workItem from="1767620914729" duration="12156000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -180,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767623355060</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched">
+      <option name="closed" value="true" />
+      <created>1767626839599</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1767626839599</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +233,13 @@
     <MESSAGE value="Job searching function works, can search with job keywords and municipality e.g Skåne, Uppsala, Norrbotten etc" />
     <MESSAGE value="Made changes to furthur seperate concern, moved REGION_MAP to jobs_service.py" />
     <MESSAGE value="Added more data to be requested from the API, such as UX items and timestamps." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more data to be requested from the API, such as UX items and timestamps." />
+    <MESSAGE value="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a combined_service.py that enriched data from both APIs into one to be later used in the UX frontend. Wired it through the router with /search/enriched" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$main.coverage" NAME="main Coverage Results" MODIFIED="1767628368861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$TEST.coverage" NAME="TEST Coverage Results" MODIFIED="1767630928334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
+    <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$salary_service.coverage" NAME="salary_service Coverage Results" MODIFIED="1767630895029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/services" />
+    <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$combined_service.coverage" NAME="combined_service Coverage Results" MODIFIED="1767632904494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend/services" />
   </component>
 </project>

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query
-from backend.services.combined_service import fetch_jobs
+from backend.services.combined_service import fetch_jobs, fetch_combined_jobs
 
 router = APIRouter()
 
@@ -11,9 +11,9 @@ def search(
 ):
     return fetch_jobs(q, municipality)
 
-@router.get("/search/enriched")
-def search_enriched(
+@router.get("/search/combined")
+def search_combined(
         q: str = Query(..., description="Job title"),
         municipality: str = Query(..., description="Municipality")
 ):
-    return fetch_jobs(q, municipality)
+    return fetch_combined_jobs(q, municipality)

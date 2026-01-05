@@ -1,30 +1,6 @@
 from backend.services.jobs_service import fetch_jobs
 from backend.services.salary_service import fetch_salary
-
-SCB_REGION_MAP = {
-    "Stockholm": "01",
-    "Uppsala": "03",
-    "Södermanland": "04",
-    "Östergötland": "05",
-    "Jönköping": "06",
-    "Kronoberg": "07",
-    "Kalmar": "08",
-    "Gotland": "09",
-    "Blekinge": "10",
-    "Skåne": "12",
-    "Halland": "13",
-    "Västra Götaland": "14",
-    "Värmland": "17",
-    "Örebro": "18",
-    "Västmanland": "19",
-    "Dalarna": "20",
-    "Gävleborg": "21",
-    "Västernorrland": "22",
-    "Jämtland": "23",
-    "Västerbotten": "24",
-    "Norrbotten": "25"
-}
-
+from backend.services.ssyk_map import JOBTECH_TO_SSYK
 
 def workload_scope(scope: dict | None) -> str | None:
     if not scope:
@@ -45,28 +21,28 @@ def workload_scope(scope: dict | None) -> str | None:
 
 def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
     jobs = fetch_jobs(query, municipality)
-
-    scb_region = SCB_REGION_MAP.get(municipality)
-    if not scb_region:
-        return []
-
     combined = []
 
     for job in jobs:
-        ssyk = job.get("ssyk")
+        jobtech_id = job.get("ssyk")
+        ssyk_code = JOBTECH_TO_SSYK.get(jobtech_id)
 
-        salary_value = None
-        if ssyk:
-            salary_data = fetch_salary(ssyk, scb_region)
-            salary_value = salary_data.get("average_salary")
+        salary = None
+        if ssyk_code is not None:
+            try:
+                salary = fetch_salary(ssyk_code).get("average_salary")
+            except Exception:
+                salary = None
 
         combined.append({
             "title": job.get("title"),
             "employer": job.get("employer"),
-            "location": f'{job.get("location", {}).get("municipality")}, {job.get("location", {}).get("region")}',
+            "location": f"{job.get('location', {}).get('municipality')}, "
+                        f"{job.get('location', {}).get('region')}",
             "workload": workload_scope(job.get("scope_of_work")),
-            "salary": salary_value,
-            "url": job.get("webpage_url")
+            "salary": salary,
+            "url": job.get("webpage_url"),
+            "ssyk": job.get("ssyk"),
         })
 
     return combined

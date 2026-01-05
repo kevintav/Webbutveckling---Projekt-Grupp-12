@@ -1,25 +1,28 @@
 import requests
 
-SCB_API_URL = "https://api.scb.se/OV0104/v1/doris/sv/AM/AM0110/AM0110A/LonYrkeRegion4A"
+PXWEB_V2_URL = (
+    "https://statistikdatabasen.scb.se/api/v2/"
+    "tables/TAB5932/data"
+)
 
-
-def fetch_salary(ssyk: str, region: str) -> dict:
-    payload = {
-        "query": [
-            {"code": "Yrke2012", "selection": {"filter": "item", "values": [ssyk]}},
-            {"code": "Region", "selection": {"filter": "item", "values": [region]}},
-            {"code": "ContentsCode", "selection": {"filter": "item", "values": ["000000BW"]}},
-        ],
-        "response": {"format": "json"}
+def fetch_salary(ssyk_2012: str) -> dict:
+    params = {
+        "lang": "en",
+        "valueCodes[ContentsCode]": "000007CD",
+        "valueCodes[Sektor]": "0",
+        "valueCodes[Yrke2012]": ssyk_2012,
+        "valueCodes[Kon]": "1,2,1+2",
+        "valueCodes[Tid]": "2024",
+        "outputFormat": "json-stat2",
     }
 
-    response = requests.post(SCB_API_URL, json=payload)
+    response = requests.get(PXWEB_V2_URL, params=params)
     response.raise_for_status()
 
     data = response.json()
 
     try:
-        value = data["data"][0]["values"][0]
-        return {"average_salary": int(value)}
-    except (IndexError, KeyError, ValueError):
+        return {"average_salary": int(data["value"][0])}
+    except (KeyError, IndexError, ValueError):
         return {"average_salary": None}
+
