@@ -10,9 +10,7 @@ form.addEventListener("submit", async (e) => {
 
     resultsDiv.innerHTML = "Laddar...";
 
-    const response = await fetch(
-        `http://127.0.0.1:8000/search/combined?q=${q}&municipality=${municipality}&year=${year}`
-    );
+    const response = await fetch(`/search/combined?q=${q}&municipality=${municipality}&year=${year}`);
 
     const data = await response.json();
 
