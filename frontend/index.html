@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobbsök</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Jobbsök med lön</h1>
+
+    <form id="searchForm">
+        <input type="text" id="query" placeholder="Yrke (t.ex. utvecklare)" required>
+        <input type="text" id="municipality" placeholder="Kommun (t.ex. Stockholm)" required>
+        <input type="number" id="year" placeholder="År (2024)" value="2024">
+        <button type="submit">Sök</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
