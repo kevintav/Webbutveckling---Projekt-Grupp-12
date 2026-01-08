@@ -23,9 +23,6 @@
             color: white;
             padding: 4rem 1rem 6rem 1rem;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .logo {
@@ -44,6 +41,7 @@
             font-size: 1.2rem;
             color: #c7d2fe;
             max-width: 550px;
+            margin: 0 auto;
         }
 
         /* Sökfält */
@@ -96,6 +94,25 @@
             color: #64748b;
         }
 
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .job-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 140px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-4px);
+        }
     </style>
 </head>
 <body>
@@ -108,9 +125,9 @@
 
 <div class="search-wrapper">
     <div class="search-card">
-        <input type="text" id="searchInput" placeholder="Vad vill du jobba med? (t.ex. UX Designer)">
-        <input type="text" id="cityInput" placeholder="Var? (t.ex. Stockholm)">
-        <button class="btn-search" onclick="showMessage()">Hitta jobb</button>
+        <input type="text" placeholder="Vad vill du jobba med? Ange yrke!">
+        <input type="text" placeholder="Var? Ange stad!">
+        <button class="btn-search" onclick="showCards()">Hitta jobb</button>
     </div>
 </div>
 
@@ -123,11 +140,14 @@
 </main>
 
 <script>
-    function showMessage() {
+    function showCards() {
         const results = document.getElementById("results");
+
         results.innerHTML = `
-            <div class="status-msg">
-                <p>EV. sökresultat...</p>
+            <div class="cards">
+                <div class="job-card"></div>
+                <div class="job-card"></div>
+                <div class="job-card"></div>
             </div>
         `;
     }
