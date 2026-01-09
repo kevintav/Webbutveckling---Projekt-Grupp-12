@@ -10,6 +10,7 @@ REGION_MAP = {
     "Norrbotten": "9hXe_F4g_eTG",
     "Jönköpings": "MtbE_xWT_eMi",
     "Västmanlands": "G6DV_fKE_Viz",
+    "Östergötlands": "oLT3_Q9p_3nn",
 }
 
 def fetch_jobs(query: str, municipality: str):
