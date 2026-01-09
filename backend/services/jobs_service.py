@@ -1,17 +1,14 @@
 import requests
+import json
+from pathlib import Path
 
 JOBSEARCH_API_URL = "https://jobsearch.api.jobtechdev.se/search"
 
-REGION_MAP = {
-    "Skåne": "CaRE_1nn_cSU",
-    "Stockholm": "oDpK_oZ2_WYt",
-    "Västra Götalands": "zdoY_6u5_Krt",
-    "Uppsala": "zBon_eET_fFU",
-    "Norrbotten": "9hXe_F4g_eTG",
-    "Jönköpings": "MtbE_xWT_eMi",
-    "Västmanlands": "G6DV_fKE_Viz",
-    "Östergötlands": "oLT3_Q9p_3nn",
-}
+BASE_DIR = Path(__file__).resolve().parent.parent
+REGION_MAP_FILE = BASE_DIR / "config" / "regions.json"
+
+with REGION_MAP_FILE.open(encoding="utf-8") as f:
+    REGION_MAP = json.load(f)
 
 def fetch_jobs(query: str, municipality: str):
     params = {
@@ -53,7 +50,7 @@ def fetch_jobs(query: str, municipality: str):
                 "min": job.get("scope_of_work", {}).get("min"),
                 "max": job.get("scope_of_work", {}).get("max")
             },
-            "ssyk": job.get("occupation", {}).get("concept_id"),
+            "ssyk": job.get("occupation_group", {}).get("concept_id"),
             "timestamp": job.get("timestamp"),
             "employment_type": {
                 "concept_id": job.get("employment_type", {}).get("concept_id"),
