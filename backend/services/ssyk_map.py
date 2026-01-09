@@ -1,3 +1,5 @@
 JOBTECH_TO_SSYK = {
-    "9K3i_XD4_Kyy": "2211",
+    "GDHs_eoz_uKx": "2512",
+    "fg7B_yov_smw": "3512",
+    "abcd_xyz_1234": "2511",
 }
