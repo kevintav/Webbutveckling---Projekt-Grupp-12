@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Added /static/ to css link as to expose it to FastAPI">
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Added a line in TEST and a new region in REGION_MAP">
+      <change afterPath="$PROJECT_DIR$/backend/config/regions.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/TEST.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/TEST.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,23 +53,23 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.TEST.executor&quot;: &quot;Run&quot;,
-    &quot;Python.combined_service.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.salary_service.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.TEST.executor": "Run",
+    "Python.combined_service.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.salary_service.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "git-widget-placeholder": "backend/kevtav",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -95,7 +95,7 @@
       <workItem from="1767794571032" duration="70000" />
       <workItem from="1767822411041" duration="129000" />
       <workItem from="1767963626660" duration="3720000" />
-      <workItem from="1767969547020" duration="3449000" />
+      <workItem from="1767969547020" duration="5029000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -217,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767970385362</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added a line in TEST and a new region in REGION_MAP">
+      <option name="closed" value="true" />
+      <created>1767973095645</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1767973095645</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +270,8 @@
     <MESSAGE value="Reworked the salary_service.py completely, worked out how PXWEB V2 works and found the correct tabell to use. /search/combined now retrieves and combines data form both APIs" />
     <MESSAGE value="remove old code" />
     <MESSAGE value="Added /static/ to css link as to expose it to FastAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added /static/ to css link as to expose it to FastAPI" />
+    <MESSAGE value="Added a line in TEST and a new region in REGION_MAP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a line in TEST and a new region in REGION_MAP" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$main.coverage" NAME="main Coverage Results" MODIFIED="1767628368861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
