@@ -4,15 +4,16 @@ from pathlib import Path
 
 JOBSEARCH_API_URL = "https://jobsearch.api.jobtechdev.se/search"
 
-REGION_MAP_FILE = Path("regions.json").parent / "regions.json"
+BASE_DIR = Path(__file__).resolve().parent.parent
+REGION_MAP_FILE = BASE_DIR / "config" / "regions.json"
 
 with REGION_MAP_FILE.open(encoding="utf-8") as f:
     REGION_MAP = json.load(f)
 
-def fetch_jobs(query: str, region: str):
+def fetch_jobs(query: str, municipality: str):
     params = {
         "q": query,
-        "region": REGION_MAP.get(region),
+        "region": REGION_MAP.get(municipality),
         "limit": 10
     }
 
@@ -49,7 +50,7 @@ def fetch_jobs(query: str, region: str):
                 "min": job.get("scope_of_work", {}).get("min"),
                 "max": job.get("scope_of_work", {}).get("max")
             },
-            "ssyk": job.get("occupation", {}).get("concept_id"),
+            "ssyk": job.get("occupation_group", {}).get("concept_id"),
             "timestamp": job.get("timestamp"),
             "employment_type": {
                 "concept_id": job.get("employment_type", {}).get("concept_id"),

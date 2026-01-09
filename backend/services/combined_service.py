@@ -1,6 +1,14 @@
+import json
+from pathlib import Path
+
 from backend.services.jobs_service import fetch_jobs
 from backend.services.salary_service import fetch_salary
-from backend.services.ssyk_map import JOBTECH_TO_SSYK
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+SSYK_MAP_FILE = BASE_DIR / "config" / "ssyk_to_occupation_group.json"
+
+with SSYK_MAP_FILE.open(encoding="utf-8") as f:
+    SSYK_MAP = json.load(f)
 
 def workload_scope(scope: dict | None) -> str | None:
     if not scope:
@@ -24,13 +32,13 @@ def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
     combined = []
 
     for job in jobs:
-        jobtech_id = job.get("ssyk")
-        ssyk_code = JOBTECH_TO_SSYK.get(jobtech_id)
+        occupation_group_concept_id = job.get("ssyk")
+        ssyk_2012 = SSYK_MAP.get(occupation_group_concept_id)
 
         salary = None
-        if ssyk_code is not None:
+        if ssyk_2012:
             try:
-                salary = fetch_salary(ssyk_code).get("average_salary")
+                salary = fetch_salary(ssyk_2012).get("average_salary")
             except Exception:
                 salary = None
 
@@ -42,7 +50,7 @@ def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
             "workload": workload_scope(job.get("scope_of_work")),
             "salary": salary,
             "url": job.get("webpage_url"),
-            "ssyk": job.get("ssyk"),
+            "ssyk": occupation_group_concept_id,
         })
 
     return combined
