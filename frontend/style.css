@@ -100,3 +100,55 @@ input {
 .job-card:hover {
     transform: translateY(-4px);
 }
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 2rem 0 1rem 0;
+  }
+  
+  .panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    margin-top: 1rem;
+  }
+  
+  .hidden { display: none; }
+  
+  .job-card {
+    display: grid;
+    gap: 0.5rem;
+  }
+  
+  .job-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  
+  .job-meta {
+    color: #475569;
+    font-size: 0.95rem;
+  }
+  
+  .job-actions a {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .job-actions a:hover { text-decoration: underline; }
+  
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  

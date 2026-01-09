@@ -18,21 +18,30 @@
 </header>
 
 <div class="search-wrapper">
-    <div class="search-card">
-        <input type="text" placeholder="Vad vill du jobba med? Ange yrke!">
-        <input type="text" placeholder="Var? Ange stad!">
-        <button class="btn-search" onclick="showCards()">Hitta jobb</button>
-    </div>
-</div>
-
-<main class="container">
-    <div id="results">
+    <form class="search-card" id="searchForm">
+      <input id="q" type="text" placeholder="Vad vill du jobba med? Ange yrke!" required>
+      <input id="location" type="text" placeholder="Var? Ange stad!" required>
+      <button class="btn-search" type="submit">Hitta jobb</button>
+    </form>
+  </div>
+  
+  <main class="container">
+    <section id="salaryPanel" class="panel hidden" aria-live="polite">
+      <h2 class="section-title">Lön & yrkesinfo</h2>
+      <div id="salaryContent" class="status-msg"></div>
+    </section>
+  
+    <section class="results-section">
+      <h2 class="section-title">Platsannonser</h2>
+  
+      <div id="results">
         <div class="status-msg">
-            <p>Skriv in ett yrke och en ort ovan och klicka på “Hitta jobb”.</p>
+          <p>Skriv in ett yrke och en ort ovan och klicka på “Hitta jobb”.</p>
         </div>
-    </div>
-</main>
-
+      </div>
+    </section>
+  </main>
+  
 <script src="script.js"></script>
 
 </body>
