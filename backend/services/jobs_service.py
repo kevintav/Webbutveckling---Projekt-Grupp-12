@@ -10,10 +10,13 @@ REGION_MAP_FILE = BASE_DIR / "config" / "regions.json"
 with REGION_MAP_FILE.open(encoding="utf-8") as f:
     REGION_MAP = json.load(f)
 
+
 def fetch_jobs(query: str, municipality: str):
+    region_id = REGION_MAP.get(municipality)
+
     params = {
         "q": query,
-        "region": REGION_MAP.get(municipality),
+        "region": region_id,
         "limit": 10
     }
 
@@ -21,55 +24,77 @@ def fetch_jobs(query: str, municipality: str):
     response.raise_for_status()
     data = response.json()
 
-    jobs_list = []
+    jobs = []
 
     for job in data.get("hits", []):
-        must_have = job.get("must_have", {})
-        nice_to_have = job.get("nice_to_have", {})
-
-        contacts = []
-        for contact in job.get("application_contacts", []):
-            contacts.append({
-                "name": contact.get("name"),
-                "description": contact.get("description"),
-                "email": contact.get("email"),
-                "telephone": contact.get("telephone"),
-                "contact_type": contact.get("contact_type")
-            })
-
-        jobs_list.append({
+        jobs.append({
             "title": job.get("headline"),
             "employer": job.get("employer", {}).get("name"),
-            "location": {
-                "municipality": job.get("workplace_address", {}).get("municipality"),
-                "region": job.get("workplace_address", {}).get("region")
-            },
-            "logo_url": job.get("logo_url"),
-            "webpage_url": job.get("webpage_url"),
-            "scope_of_work": {
-                "min": job.get("scope_of_work", {}).get("min"),
-                "max": job.get("scope_of_work", {}).get("max")
-            },
-            "ssyk": job.get("occupation_group", {}).get("concept_id"),
-            "timestamp": job.get("timestamp"),
-            "employment_type": {
-                "concept_id": job.get("employment_type", {}).get("concept_id"),
-                "label": job.get("employment_type", {}).get("label")
-            },
-
-            "must_have_skills": must_have.get("skills", []),
-            "must_have_languages": must_have.get("languages", []),
-            "must_have_work_experiences": must_have.get("work_experiences", []),
-            "must_have_education": must_have.get("education", []),
-            "must_have_education_level": must_have.get("education_level", []),
-
-            "nice_to_have_skills": nice_to_have.get("skills", []),
-            "nice_to_have_languages": nice_to_have.get("languages", []),
-            "nice_to_have_work_experiences": nice_to_have.get("work_experiences", []),
-            "nice_to_have_education": nice_to_have.get("education", []),
-            "nice_to_have_education_level": nice_to_have.get("education_level", []),
-
-            "contacts": contacts
+            "location": job.get("workplace_address", {}).get("municipality"),
+            "region": job.get("workplace_address", {}).get("region"),
+            "published": job.get("timestamp"),
+            "url": job.get("webpage_url"),
+            "ssyk_jobtech": job.get("occupation_group", {}).get("concept_id")
         })
 
-    return jobs_list
+    return jobs
+
+def extract_requirements(job: dict):
+    must_have = job.get("must_have", {})
+    nice_to_have = job.get("nice_to_have", {})
+
+    return {
+        "must_have": {
+            "skills": must_have.get("skills", []),
+            "languages": must_have.get("languages", []),
+            "work_experiences": must_have.get("work_experiences", []),
+            "education": must_have.get("education", []),
+            "education_level": must_have.get("education_level", [])
+        },
+        "nice_to_have": {
+            "skills": nice_to_have.get("skills", []),
+            "languages": nice_to_have.get("languages", []),
+            "work_experiences": nice_to_have.get("work_experiences", []),
+            "education": nice_to_have.get("education", []),
+            "education_level": nice_to_have.get("education_level", [])
+        }
+    }
+
+def extract_contacts(job: dict):
+    contacts = []
+
+    for contact in job.get("application_contacts", []):
+        contacts.append({
+            "name": contact.get("name"),
+            "email": contact.get("email"),
+            "telephone": contact.get("telephone"),
+            "role": contact.get("contact_type"),
+            "description": contact.get("description")
+        })
+
+    return contacts
+
+def extract_scope_of_work(job: dict):
+    scope = job.get("scope_of_work", {})
+
+    return {
+        "min": scope.get("min"),
+        "max": scope.get("max")
+    }
+
+def extract_employment_type(job: dict):
+    emp = job.get("employment_type", {})
+
+    return {
+        "concept_id": emp.get("concept_id"),
+        "label": emp.get("label")
+    }
+
+def fetch_job_details(job: dict):
+    return {
+        "requirements": extract_requirements(job),
+        "contacts": extract_contacts(job),
+        "scope_of_work": extract_scope_of_work(job),
+        "employment_type": extract_employment_type(job),
+        "logo_url": job.get("logo_url")
+    }

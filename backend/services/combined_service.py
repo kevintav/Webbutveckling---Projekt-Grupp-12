@@ -10,23 +10,6 @@ SSYK_MAP_FILE = BASE_DIR / "config" / "ssyk_to_occupation_group.json"
 with SSYK_MAP_FILE.open(encoding="utf-8") as f:
     SSYK_MAP = json.load(f)
 
-def workload_scope(scope: dict | None) -> str | None:
-    if not scope:
-        return "Unknown"
-
-    min_pct = scope.get("min")
-    max_pct = scope.get("max")
-
-    if min_pct == 100 and max_pct == 100:
-        return "Full-time"
-    if max_pct is not None and max_pct < 100:
-        return "Part-time"
-    if min_pct is not None and max_pct is not None:
-        return "Variable"
-
-    return "Unknown"
-
-
 def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
     jobs = fetch_jobs(query, municipality)
     combined = []

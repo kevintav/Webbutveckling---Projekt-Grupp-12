@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Added JSON file containing a dict of every län in Sweden with their respective concept_id according to Jobtech Taxonomy ID system.">
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Reworked the mappings and changed the structure to use JSON files instead of hardcoded maps.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/regions.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/regions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/combined_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/ssyk_map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="backend/kevtav" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,10 +63,11 @@
     "Python.main.executor": "Run",
     "Python.salary_service.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "git-widget-placeholder": "backend/kevtav",
+    "git-widget-placeholder": "master",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.sourceCode",
     "vue.rearranger.settings.migration": "true"
@@ -106,6 +105,7 @@
       <workItem from="1767822411041" duration="129000" />
       <workItem from="1767963626660" duration="3720000" />
       <workItem from="1767969547020" duration="13304000" />
+      <workItem from="1768053094202" duration="690000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
