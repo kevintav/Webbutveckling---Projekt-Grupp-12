@@ -30,9 +30,8 @@ def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
             "employer": job.get("employer"),
             "location": f"{job.get('location', {}).get('municipality')}, "
                         f"{job.get('location', {}).get('region')}",
-            "workload": workload_scope(job.get("scope_of_work")),
             "salary": salary,
-            "url": job.get("webpage_url"),
+            "url": job.get("url"),
             "ssyk": occupation_group_concept_id,
         })
 

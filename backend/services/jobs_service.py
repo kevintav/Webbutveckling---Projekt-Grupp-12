@@ -1,3 +1,5 @@
+import datetime
+
 import requests
 import json
 from pathlib import Path
@@ -12,11 +14,9 @@ with REGION_MAP_FILE.open(encoding="utf-8") as f:
 
 
 def fetch_jobs(query: str, municipality: str):
-    region_id = REGION_MAP.get(municipality)
-
     params = {
         "q": query,
-        "region": region_id,
+        "region": REGION_MAP.get(municipality),
         "limit": 10
     }
 
@@ -27,14 +27,19 @@ def fetch_jobs(query: str, municipality: str):
     jobs = []
 
     for job in data.get("hits", []):
+        ts = job.get("timestamp")
+
         jobs.append({
             "title": job.get("headline"),
             "employer": job.get("employer", {}).get("name"),
-            "location": job.get("workplace_address", {}).get("municipality"),
+            "location": {
+                "municipality": job.get("workplace_address", {}).get("municipality"),
+                "region": job.get("workplace_address", {}).get("region"),
+            },
             "region": job.get("workplace_address", {}).get("region"),
             "published": job.get("timestamp"),
             "url": job.get("webpage_url"),
-            "ssyk_jobtech": job.get("occupation_group", {}).get("concept_id")
+            "ssyk": job.get("occupation_group", {}).get("concept_id")
         })
 
     return jobs

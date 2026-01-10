@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Divided up the fetch_jobs function as to vastly improve performance and create several helper functions that can be used when necessary">
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Remade the change with css to a static direct">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/combined_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/combined_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/jobs_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/jobs_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +105,7 @@
       <workItem from="1767822411041" duration="129000" />
       <workItem from="1767963626660" duration="3720000" />
       <workItem from="1767969547020" duration="13304000" />
-      <workItem from="1768053094202" duration="1080000" />
+      <workItem from="1768053094202" duration="2009000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -249,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768054007862</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Remade the change with css to a static direct">
+      <option name="closed" value="true" />
+      <created>1768054207725</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1768054207725</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +307,8 @@
     <MESSAGE value="Added a line in TEST and a new region in REGION_MAP" />
     <MESSAGE value="Added JSON file containing a dict of every län in Sweden with their respective concept_id according to Jobtech Taxonomy ID system." />
     <MESSAGE value="Divided up the fetch_jobs function as to vastly improve performance and create several helper functions that can be used when necessary" />
-    <option name="LAST_COMMIT_MESSAGE" value="Divided up the fetch_jobs function as to vastly improve performance and create several helper functions that can be used when necessary" />
+    <MESSAGE value="Remade the change with css to a static direct" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remade the change with css to a static direct" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$main.coverage" NAME="main Coverage Results" MODIFIED="1767628368861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
