@@ -27,8 +27,6 @@ def fetch_jobs(query: str, municipality: str):
     jobs = []
 
     for job in data.get("hits", []):
-        ts = job.get("timestamp")
-
         jobs.append({
             "title": job.get("headline"),
             "employer": job.get("employer", {}).get("name"),
@@ -36,7 +34,6 @@ def fetch_jobs(query: str, municipality: str):
                 "municipality": job.get("workplace_address", {}).get("municipality"),
                 "region": job.get("workplace_address", {}).get("region"),
             },
-            "region": job.get("workplace_address", {}).get("region"),
             "published": job.get("timestamp"),
             "url": job.get("webpage_url"),
             "ssyk": job.get("occupation_group", {}).get("concept_id")
