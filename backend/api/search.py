@@ -12,8 +12,9 @@ def search(
     return fetch_jobs(q, municipality)
 
 @router.get("/search/combined")
-def search_combined(
+async def search_combined(
         q: str = Query(..., description="Job title"),
         municipality: str = Query(..., description="Municipality")
 ):
-    return fetch_combined_jobs(q, municipality)
+    result = await fetch_combined_jobs(q, municipality)
+    return result
