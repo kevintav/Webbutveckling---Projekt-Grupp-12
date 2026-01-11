@@ -9,11 +9,21 @@ const salaryContent = document.getElementById("salaryContent");
 
 function setLoading() {
   resultsEl.innerHTML = `
-    <div class="status-msg"><p>Hämtar platsannonser…</p></div>
+    <div class="status-msg loading">
+      <div class="spinner"></div>
+      <p>Hämtar platsannonser…</p>
+    </div>
   `;
+
   salaryPanel.classList.remove("hidden");
-  salaryContent.innerHTML = `<p>Hämtar lönestatistik…</p>`;
+  salaryContent.innerHTML = `
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Hämtar lönestatistik…</p>
+    </div>
+  `;
 }
+
 
 function setError(message) {
   resultsEl.innerHTML = `
