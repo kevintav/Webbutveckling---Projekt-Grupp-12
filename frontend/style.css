@@ -8,35 +8,54 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #312e81 0%, #4338ca 100%);
+    background: radial-gradient(circle at top right, #4768ec, #191593);
     color: white;
-    padding: 4rem 1rem 6rem 1rem;
+    padding: 6rem 1rem 8rem 1rem;
     text-align: center;
 }
+
 
 .logo {
     font-size: 1.75rem;
     font-weight: 800;
     margin-bottom: 2rem;
+    transition: all 0.3s ease; 
+    display: inline-block;
+    align-self: flex-start;
+    text-transform: uppercase; 
+    letter-spacing: 2px;  
+    background: rgba(105, 128, 255, 0.1); 
+    padding: 5px 15px;
+    border-radius: 8px;
+    
+}
+
+.logo:hover {
+    color: #c7d2fe; 
+    transform: scale(1.05); 
+    text-shadow: 0 0 15px rgba(180, 188, 223, 0.4); 
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: #c7d2fe;
     max-width: 550px;
     margin: 0 auto;
+    
 }
 
 .search-wrapper {
     max-width: 900px;
     margin: -3rem auto 4rem auto;
     padding: 0 1.5rem;
+
 }
 
 .search-card {
@@ -47,19 +66,36 @@ h1 {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 input {
     flex: 1;
     min-width: 240px;
-    padding: 16px 20px;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
+    padding: 18px 24px;
+    border: 2px solid #d1dbe8;
+    border-radius: 30px;
     font-size: 1rem;
+    transition: all 0.8s ease;
+    background-color: #f8fafc;
+    cursor: pointer;
+}
+
+input:hover {
+    border-color: #cbd5e1; 
+    background-color: #ffffff;
+}
+
+input :focus {
+    outline:none;
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow:0 0 0 4px rgba(79, 70, 229, 0.1);
+    transform: translateY(-1px);
 }
 
 .btn-search {
-    background: #4f46e5;
+    background: #3e51e2;
     color: white;
     border: none;
     padding: 0 2rem;
@@ -67,6 +103,19 @@ input {
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
+    transition: none;
+}
+
+.btn-search:hover {
+    background-color: #3e33b5; 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+.btn-search:active {
+    transform: translateY(0);
 }
 
 .container {
@@ -90,13 +139,101 @@ input {
 .job-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 2rem;
+    margin-bottom: 1rem;
     min-height: 140px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
+    display: grid;
+    cursor: pointer;
 }
 
 .job-card:hover {
     transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #e2e8f0;
 }
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 2rem 0 1rem 0;
+  }
+  
+  .panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    margin-top: 1rem;
+  }
+  
+  .hidden { display: none; }
+  
+  .job-card {
+    display: grid;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .job-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  
+  .job-meta {
+    color: #475569;
+    font-size: 0.95rem;
+  }
+  
+  .job-actions a {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .job-actions a:hover { text-decoration: underline; }
+  
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+
+header h1, header .subtitle {
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ccc;
+    border-top: 3px solid #333;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+  
