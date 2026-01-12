@@ -16,10 +16,9 @@ async def fetch_salary(ssyk_2012: str) -> dict:
         "valueCodes[Tid]": "2024",
         "outputFormat": "json-stat2",
     }
-    async with httpx.AsyncClient() as client:
-        response = requests.get(PXWEB_V2_URL, params=params)
+    async with httpx.AsyncClient(timeout=10) as client:
+        response = await client.get(PXWEB_V2_URL, params=params)
         response.raise_for_status()
-
         data = response.json()
 
         try:
