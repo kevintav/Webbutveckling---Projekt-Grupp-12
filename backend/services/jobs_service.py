@@ -19,8 +19,11 @@ def fetch_jobs(query: str, region_name: str):
     params = {
         "q": query,
         "limit": 10,
-        "region_concept_id": region_concept_id
+        "region": region_concept_id
     }
+
+    if region_name:
+        params["region"] = region_concept_id
 
     response = requests.get(JOBSEARCH_API_URL, params=params)
     response.raise_for_status()
