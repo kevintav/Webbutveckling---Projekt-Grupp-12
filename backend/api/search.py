@@ -7,14 +7,13 @@ router = APIRouter()
 @router.get("/search")
 def search(
         q: str = Query(..., description="Job title"),
-        municipality: str = Query(..., description="Municipality")
+        region: str = Query(..., description="Region name, e.g. Skåne, Stockholm")
 ):
-    return fetch_jobs(q, municipality)
+    return fetch_jobs(q, region)
 
 @router.get("/search/combined")
 async def search_combined(
         q: str = Query(..., description="Job title"),
-        municipality: str = Query(..., description="Municipality")
+        region: str = Query(..., description="Region name, e.g. Skåne, Stockholm")
 ):
-    result = await fetch_combined_jobs(q, municipality)
-    return result
+    return await fetch_combined_jobs(q, region)
