@@ -13,12 +13,17 @@ with REGION_MAP_FILE.open(encoding="utf-8") as f:
     REGION_MAP = json.load(f)
 
 
-def fetch_jobs(query: str, municipality: str):
+def fetch_jobs(query: str, region_name: str):
+    region_concept_id = REGION_MAP.get(region_name)
+
     params = {
         "q": query,
-        "region": REGION_MAP.get(municipality),
-        "limit": 10
+        "limit": 10,
+        "region": region_concept_id
     }
+
+    if region_name:
+        params["region"] = region_concept_id
 
     response = requests.get(JOBSEARCH_API_URL, params=params)
     response.raise_for_status()
@@ -34,6 +39,8 @@ def fetch_jobs(query: str, municipality: str):
                 "municipality": job.get("workplace_address", {}).get("municipality"),
                 "region": job.get("workplace_address", {}).get("region"),
             },
+            "scope_of_work": job.get("scope_of_work"),
+            "Working_hours_type": job.get("working_hours_type"),
             "published": job.get("timestamp"),
             "url": job.get("webpage_url"),
             "ssyk": job.get("occupation_group", {}).get("concept_id")
