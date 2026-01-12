@@ -1,5 +1,5 @@
 from backend.services.jobs_service import fetch_jobs
-from backend.services.salary_service import fetch_salary
+from backend.services.salary_service import fetch_salary_distribution
 from pathlib import Path
 import asyncio
 import json
@@ -11,7 +11,7 @@ SSYK_MAP_FILE = BASE_DIR / "config" / "ssyk_to_occupation_group.json"
 with SSYK_MAP_FILE.open(encoding="utf-8") as f:
     SSYK_MAP: dict[str, str] = json.load(f)
 
-_salary_cache: dict[str, Optional[int]] = {}
+_salary_cache: dict[str, Optional[dict]] = {}
 
 
 def workload_scope(scope: dict | None) -> str:
@@ -31,12 +31,11 @@ def workload_scope(scope: dict | None) -> str:
     return "Unknown"
 
 
-async def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
-    jobs = fetch_jobs(query, municipality)
+async def fetch_combined_jobs(query: str, region: str) -> list[dict]:
+    jobs = fetch_jobs(query, region)
     combined: list[dict] = []
 
-    async def get_salary_for_job(job: dict) -> Optional[int]:
-
+    async def get_salary_for_job(job: dict) -> Optional[dict]:
         occupation_id = job.get("ssyk")
         ssyk_2012 = SSYK_MAP.get(occupation_id)
 
@@ -47,14 +46,12 @@ async def fetch_combined_jobs(query: str, municipality: str) -> list[dict]:
             return _salary_cache[ssyk_2012]
 
         try:
-            salary_data = await fetch_salary(ssyk_2012)
-            salary = salary_data.get("average_salary")
-            _salary_cache[ssyk_2012] = salary
-            return salary
+            salary_data = await fetch_salary_distribution(ssyk_2012)
+            _salary_cache[ssyk_2012] = salary_data
+            return salary_data
         except Exception:
             _salary_cache[ssyk_2012] = None
             return None
-
 
     salary_tasks = [get_salary_for_job(job) for job in jobs]
     salaries = await asyncio.gather(*salary_tasks)
