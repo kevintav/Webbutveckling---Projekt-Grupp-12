@@ -77,7 +77,7 @@ form.addEventListener("submit", async (e) => {
   setLoading();
 
   try {
-    const url = `${SEARCH_ENDPOINT}?q=${encodeURIComponent(q)}&municipality=${encodeURIComponent(location)}`;
+    const url = `${SEARCH_ENDPOINT}?q=${encodeURIComponent(q)}&region=${encodeURIComponent(location)}`;
     const res = await fetch(url);
 
     if (!res.ok) {
