@@ -145,6 +145,12 @@ form.addEventListener("submit", async (e) => {
         renderSalary({q, location, salary});
         renderJobs(jobs);
 
+        const updatedEl = document.getElementById("lastUpdated");
+  if (updatedEl) {
+    updatedEl.textContent =
+      "Senast uppdaterad: " + new Date().toLocaleString("sv-SE");
+    updatedEl.classList.remove("hidden");
+  }
     } catch (err) {
         console.error(err);
         setError("Kunde inte hämta data");
