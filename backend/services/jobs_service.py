@@ -1,5 +1,3 @@
-import datetime
-
 import requests
 import json
 from pathlib import Path
