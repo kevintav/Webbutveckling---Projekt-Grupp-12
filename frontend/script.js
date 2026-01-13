@@ -8,6 +8,8 @@ const salaryContent = document.getElementById("salaryContent");
 
 const jobCountEl = document.getElementById("jobCount"); 
 
+const clearBtn = document.getElementById("clearBtn");
+
 function setLoading() {
     resultsEl.innerHTML = `
     <div class="status-msg loading">
@@ -147,6 +149,23 @@ form.addEventListener("submit", async (e) => {
         console.error(err);
         setError("Kunde inte hämta data");
     }
+});
+
+clearBtn.addEventListener("click", () => {
+  
+  document.getElementById("q").value = "";
+  document.getElementById("location").value = "";
+
+  resultsEl.innerHTML = `
+      <div class="status-msg">
+        <p>Skriv in ett yrke och en ort i sökfälten ovan</p>
+      </div>
+  `;
+
+  if (typeof jobCountEl !== 'undefined' && jobCountEl) {
+      jobCountEl.innerText = "";
+  }
+  salaryPanel.classList.add("hidden");
 });
 
 function openJob(url) {
