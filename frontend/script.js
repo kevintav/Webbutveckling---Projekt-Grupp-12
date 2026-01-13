@@ -100,7 +100,7 @@ function renderJobs(jobs) {
     }
 
     const cards = jobs.map(job => `
-    <article class="job-card">
+    <article class="job-card" onclick='openJob(${JSON.stringify(job.url ?? "")})'>
       <div class="job-title">${job.title ?? "Okänd titel"}</div>
       <div class="job-meta">
         ${job.employer ? `<span class="badge">${job.employer}</span>` : ""}
@@ -149,3 +149,7 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
+function openJob(url) {
+    if (!url) return;
+    window.open(url, "_blank", "noopener");
+}
