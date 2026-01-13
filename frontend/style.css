@@ -62,16 +62,19 @@ h1 {
     background: #ffffff;
     padding: 1rem;
     border-radius: 16px;
-    border: 1px solid #e2e8f0;
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 8px;
     flex-wrap: wrap;
     cursor: pointer;
+    max-width: 900px; 
+    margin: -40px auto 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 input {
     flex: 1;
-    min-width: 240px;
+    min-width: 120px;
     padding: 18px 24px;
     border: 2px solid #d1dbe8;
     border-radius: 30px;
@@ -103,7 +106,12 @@ input :focus {
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: none;
+    transition: all 0.3s ease;
+    height: 50px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .btn-search:hover {
@@ -115,6 +123,31 @@ input :focus {
 }
 
 .btn-search:active {
+    transform: translateY(0);
+}
+
+.btn-clear {
+    height: 50px; 
+    padding: 0 1.5rem;
+    background-color: #f1f5f9; 
+    color: #475569;
+    border: none;
+    border-radius: 12px; 
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 5px; 
+    white-space: nowrap; 
+}
+
+.btn-clear:hover {
+    background-color: #e2e8f0;
+    color: #1e293b;
+    transform: translateY(-2px);
+}
+
+.btn-clear:active {
     transform: translateY(0);
 }
 
