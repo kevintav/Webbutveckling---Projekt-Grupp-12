@@ -54,12 +54,12 @@ OBS! Tjänstens begränsningar beror på att de två API:erna använder olika kl
 5. Öppna applikationen via `http://localhost:8000`
 
 ### Så här använder du tjänsten
-1. Skriv in yrke i sökfältet (t.ex Systemutvecklare, Läkare, Specialist m.m)
+1. Skriv in yrke i sökfältet (t.ex Systemutvecklare, Läkare, Specialist m.m) OBS
 2. Skriv en region (t.ex Skåne, Stockholm)
 3. Klicka på Sök Jobb knappen
 4. Resultat visar:
    - Lediga platsannonser
-   - Relevant lönestatistik för yrkesområdet (OBS! INTE för själva yrket men yrkeområdet)
+   - Relevant lönestatistik för yrkesområdet (OBS! INTE för själva yrket men yrkeområdet, alla yrken finns inte tillgängliga att hämta lönestatistik från pga olika klassificeringssystem)
    - genomsnittliga månadslön
 
 ### API Dokumentation
