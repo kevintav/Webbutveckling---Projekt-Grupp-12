@@ -53,6 +53,15 @@ OBS! Tjänstens begränsningar beror på att de två API:erna använder olika kl
 4. Starta FastAPI genom terminalen `fastapi dev backend/main.py`
 5. Öppna applikationen via `http://localhost:8000`
 
+### Så här använder du tjänsten
+1. Skriv in yrke i sökfältet (t.ex Systemutvecklare, Läkare, Specialist m.m)
+2. Skriv en region (t.ex Skåne, Stockholm)
+3. Klicka på Sök Jobb knappen
+4. Resultat visar:
+   - Lediga platsannonser
+   - Relevant lönestatistik för yrkesområdet (OBS! INTE för själva yrket men yrkeområdet)
+   - genomsnittliga månadslön
+
 ### API Dokumentation
 
 Autogenereras av FastAPI och finns tillgänglig via `http://localhost:8000/docs`

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Tog bort onödiga import">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/config/ssyk_to_occupation_group.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/config/ssyk_to_occupation_group.json" afterDir="false" />
+    <list default="true" id="9d498236-a6c6-4102-a11f-40dc0ce9c472" name="Changes" comment="Lade till mer ssyk_to_occupation_group.json mappings">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,7 @@
       <workItem from="1767969547020" duration="13304000" />
       <workItem from="1768053094202" duration="3501000" />
       <workItem from="1768130375714" duration="3681000" />
-      <workItem from="1768300457798" duration="3985000" />
+      <workItem from="1768300457798" duration="4290000" />
     </task>
     <task id="LOCAL-00001" summary="Startup code">
       <option name="closed" value="true" />
@@ -321,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768303437279</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Lade till mer ssyk_to_occupation_group.json mappings">
+      <option name="closed" value="true" />
+      <created>1768304696737</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1768304696737</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +358,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Startup code" />
     <MESSAGE value="Startup code 1.1" />
     <MESSAGE value="Startup code 1.2" />
     <MESSAGE value="Startup code 1.4" />
@@ -376,7 +382,8 @@
     <MESSAGE value="Removed TEST file" />
     <MESSAGE value="Lade till README.md och requirements.txt" />
     <MESSAGE value="Tog bort onödiga import" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tog bort onödiga import" />
+    <MESSAGE value="Lade till mer ssyk_to_occupation_group.json mappings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lade till mer ssyk_to_occupation_group.json mappings" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Webbutveckling___Projekt_Grupp_12$main.coverage" NAME="main Coverage Results" MODIFIED="1767628368861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/backend" />
