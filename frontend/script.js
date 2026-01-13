@@ -6,6 +6,8 @@ const resultsEl = document.getElementById("results");
 const salaryPanel = document.getElementById("salaryPanel");
 const salaryContent = document.getElementById("salaryContent");
 
+const jobCountEl = document.getElementById("jobCount"); 
+
 function setLoading() {
     resultsEl.innerHTML = `
     <div class="status-msg loading">
@@ -81,6 +83,16 @@ function renderSalary({q, location, salary}) {
 
 
 function renderJobs(jobs) {
+  const query = document.getElementById("q").value.trim();
+    const location = document.getElementById("location").value.trim();
+
+    if (jobCountEl) {
+        if (jobs.length > 0) {
+            jobCountEl.innerText = `Hittade ${jobs.length} lediga tjänster för "${query}" i ${location}`;
+        } else {
+            jobCountEl.innerText = "";
+        }
+    }
     if (!jobs.length) {
         resultsEl.innerHTML =
             `<div class="status-msg"><p>Inga platsannonser hittades.</p></div>`;
