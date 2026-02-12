@@ -13,6 +13,13 @@ const clearBtn = document.getElementById("clearBtn");
 const STORAGE_KEY = "lastSearch";
 
 
+
+
+
+
+
+
+
 function setLoading() {
     resultsEl.innerHTML = `
     <div class="status-msg loading">
@@ -129,6 +136,8 @@ form.addEventListener("submit", async (e) => {
 
     if (!q || !location) return;
 
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ q, location }));
+
     setLoading();
 
     try {
@@ -161,8 +170,8 @@ form.addEventListener("submit", async (e) => {
 });
 
 clearBtn.addEventListener("click", () => {
-  
-  document.getElementById("q").value = "";
+    localStorage.removeItem(STORAGE_KEY);
+    document.getElementById("q").value = "";
   document.getElementById("location").value = "";
 
   resultsEl.innerHTML = `
@@ -181,3 +190,25 @@ function openJob(url) {
     if (!url) return;
     window.open(url, "_blank", "noopener");
 }
+
+
+
+
+
+window.addEventListener("load", () => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (!saved) return;
+
+    try {
+        const { q, location } = JSON.parse(saved);
+
+        document.getElementById("q").value = q;
+        document.getElementById("location").value = location;
+
+        // Kör sökningen automatiskt
+        form.dispatchEvent(new Event("submit"));
+    } catch (e) {
+        console.error("Kunde inte läsa sparad sökning");
+    }
+});
+
