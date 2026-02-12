@@ -10,6 +10,9 @@ const jobCountEl = document.getElementById("jobCount");
 
 const clearBtn = document.getElementById("clearBtn");
 
+const STORAGE_KEY = "lastSearch";
+
+
 function setLoading() {
     resultsEl.innerHTML = `
     <div class="status-msg loading">
