@@ -13,6 +13,11 @@ const clearBtn = document.getElementById("clearBtn");
 const STORAGE_KEY = "lastSearch";
 
 
+const THEME_KEY = "theme";
+const themeToggle = document.getElementById("themeToggle");
+
+
+
 
 
 
@@ -211,4 +216,31 @@ window.addEventListener("load", () => {
         console.error("Kunde inte läsa sparad sökning");
     }
 });
+
+
+// Load saved theme
+window.addEventListener("load", () => {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+    }
+});
+
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    if (isDark) {
+        localStorage.setItem(THEME_KEY, "dark");
+        themeToggle.textContent = "☀️";
+    } else {
+        localStorage.setItem(THEME_KEY, "light");
+        themeToggle.textContent = "🌙";
+    }
+});
+
 
