@@ -116,21 +116,104 @@ function renderJobs(jobs) {
         return;
     }
 
-    const cards = jobs.map(job => `
-    <article class="job-card" onclick='openJob(${JSON.stringify(job.url ?? "")})'>
-      <div class="job-title">${job.title ?? "Okänd titel"}</div>
-      <div class="job-meta">
-        ${job.employer ? `<span class="badge">${job.employer}</span>` : ""}
-        ${job.location ? `<span>• ${job.location}</span>` : ""}
-      </div>
-      ${job.url ? `
-        <div class="job-actions">
-          <a href="${job.url}" target="_blank" rel="noopener">Öppna annons</a>
-        </div>` : ""}
-    </article>
-  `).join("");
+const cards = jobs.map(job => `
+  <article class="job-card">
+    <div class="job-title">${job.title ?? "Okänd titel"}</div>
+
+    <div class="job-meta">
+      ${job.employer ? `<span class="badge">${job.employer}</span>` : ""}
+      ${job.location ? `<span>• ${job.location}</span>` : ""}
+    </div>
+
+    <div class="job-actions">
+      ${job.url ? `<a href="${job.url}" target="_blank">Öppna annons</a>` : ""}
+    <button class="fav-btn ${isFavorite(job) ? "active" : ""}" onclick="toggleFavoriteFromUrl('${job.url}')">${isFavorite(job) ? "❤️" : "🤍"} </button>    
+    </div>
+  </article>
+`).join("");
 
     resultsEl.innerHTML = `<div class="cards">${cards}</div>`;
+}
+
+const FAVORITES_KEY = "favorites";
+
+function getFavorites() {
+    return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+}
+
+function saveFavorites(favs) {
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+}
+
+function toggleFavorite(job) {
+    let favs = getFavorites();
+
+    const exists = favs.find(f => f.url === job.url);
+
+    if (exists) {
+        favs = favs.filter(f => f.url !== job.url);
+    } else {
+        favs.push(job);
+    }
+
+    saveFavorites(favs);
+
+    renderFavorites();
+
+    const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+    renderJobs(lastJobs);
+}
+
+const toggleBtn = document.getElementById("toggleFavoritesBtn");
+const favContainer = document.getElementById("favorites");
+
+toggleBtn.addEventListener("click", () => {
+    favContainer.classList.toggle("hidden");
+    toggleBtn.textContent = favContainer.classList.contains("hidden") ? "Visa favoriter" : "Dölj favoriter";
+});
+
+
+function renderFavorites() {
+    const favs = getFavorites();
+    const container = document.getElementById("favorites");
+
+    if (!favs.length) {
+        container.innerHTML = "<p>Inga favoriter ännu.</p>";
+        return;
+    }
+
+      const cards = favs.map(job => `
+          <article class="job-card">
+              <div class="job-title">${job.title ?? "Okänd titel"}</div>
+
+              <div class="job-meta">
+                  ${job.employer ? `<span class="badge">${job.employer}</span>` : ""}
+                  ${job.location ? `<span>• ${job.location}</span>` : ""}
+              </div>
+
+              <div class="job-actions">
+                  ${job.url ? `<a href="${job.url}" target="_blank">Öppna annons</a>` : ""}
+                  <button onclick='toggleFavoriteFromUrl("${job.url}")'>❌ Ta bort </button>
+              </div>
+          </article>
+      `).join("");
+
+    container.innerHTML = cards;
+}
+
+function isFavorite(job) {
+    const favs = getFavorites();
+    return favs.some(f => f.url === job.url);
+}
+
+
+function toggleFavoriteFromUrl(url) {
+    const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+    const job = lastJobs.find(j => j.url === url);
+
+    if (job) {
+        toggleFavorite(job);
+    }
 }
 
 form.addEventListener("submit", async (e) => {
@@ -156,6 +239,7 @@ form.addEventListener("submit", async (e) => {
         const data = await res.json();
 
         const jobs = Array.isArray(data) ? data : (data.jobs || []);
+        localStorage.setItem("lastResults", JSON.stringify(jobs));
         const salaryJob = jobs.find(job => job.salary != null);
         const salary = salaryJob?.salary ?? null;
 
@@ -241,6 +325,10 @@ themeToggle.addEventListener("click", () => {
         localStorage.setItem(THEME_KEY, "light");
         themeToggle.textContent = "🌙";
     }
+});
+
+window.addEventListener("load", () => {
+    renderFavorites();
 });
 
 
