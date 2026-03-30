@@ -7,56 +7,75 @@
     <title>JobbHittaren</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="/static/style.css"></head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 <body>
 
 <header>
     <div class="logo">Karriärkollen</div>
     <h1>Hitta din karriär här!</h1>
-    <p class="subtitle">Upptäck jobb och hämta lönestatistik med en enkel sökning</p>
-
+    <p class="subtitle">Upptäck jobb och hämta lönestatistik med en enkel sökning </p>
     <button id="themeToggle" class="theme-toggle">🌙</button>
-
-
 </header>
 
 <div class="search-wrapper">
     <form class="search-card" id="searchForm">
-      <input id="q" type="text" placeholder="Ange jobbtitel" required>
-      <input id="location" type="text" placeholder="Ange ort" required>
-      <button class="btn-search" type="submit">Sök jobb</button>
-      <button class="btn-clear" type="button" id="clearBtn">Rensa Sökning</button>
+        <input id="q" type="text" placeholder="Ange jobbtitel" required>
+        <input id="location" type="text" placeholder="Ange ort" required>
+        <button class="btn-search" type="submit">Sök jobb</button>
+        <button class="btn-clear" type="button" id="clearBtn">Rensa Sökning</button>
     </form>
-  </div>
-  
-  <main class="container">
-    <section class="panel">
-      <h2 class="section-title">Favoriter ❤️</h2>
-      <div id="favorites"></div>
-    </section>
+</div>
+
+<main class="container">
     <div class="favorites-wrapper">
-      <button id="toggleFavoritesBtn">Visa favoriter</button>
-      <div id="favorites" class="hidden"></div>
+        <button id="toggleFavoritesBtn">Visa favoriter</button>
+        <div id="favoritesContainer" class="hidden"></div>
     </div>
+
+    <div class="filters-wrapper">
+        <label>
+            Sortera efter:
+            <select id="sortSelect">
+                <option value="">Ingen</option>
+                <option value="title">Titel (A→Ö)</option>
+                <option value="employer">Arbetsgivare (A→Ö)</option>
+                <option value="salary">Medianlön (högst först)</option>
+            </select>
+        </label>
+
+        <label>
+            Anställningstyp:
+            <select id="employmentFilter">
+                <option value="">Alla</option>
+                <option value="Full-time">Heltid</option>
+                <option value="Part-time">Deltid</option>
+                <option value="Variable">Variabel</option>
+            </select>
+        </label>
+
+        <label>
+            Min lön (kr/mån):
+            <input type="number" id="minSalary" placeholder="t.ex. 30000">
+        </label>
+    </div>
+
     <section id="salaryPanel" class="panel hidden" aria-live="polite">
-      <h2 class="section-title">Lön & yrkesinfo</h2>
-      <div id="salaryContent" class="status-msg"></div>
+        <h2 class="section-title">Lön & yrkesinfo</h2>
+        <div id="salaryContent" class="status-msg"></div>
     </section>
-  
+
     <section class="results-section">
-      <p id="jobCount" class="job-count-text"></p>
-      <div id="results">
-        <div class="status-msg">
-          <p>Skriv in ett yrke och en ort i sökfälten ovan</p>
+        <p id="jobCount" class="job-count-text"></p>
+        <div id="results">
+            <div class="status-msg">
+                <p>Skriv in ett yrke och en ort i sökfälten ovan</p>
+            </div>
         </div>
-      </div>
         <p id="lastUpdated" class="hidden"></p>
     </section>
-    </section>
-  </main>
-  
-<script src="/static/script.js"></script>
+</main>
 
+<script src="/static/script.js?v=15"></script>
 </body>
 </html>
