@@ -98,6 +98,66 @@ function renderSalary({q, location, salary}) {
   `;
 }
 
+const sortSelect = document.getElementById("sortSelect");
+const employmentFilter = document.getElementById("employmentFilter");
+const minSalaryInput = document.getElementById("minSalary");
+
+function applyFiltersAndSort(jobs) {
+  let filtered = [...jobs];
+
+  console.log("Testing");
+
+  const empType = employmentFilter.value;
+
+  if (empType) {
+    filtered = filtered.filter(job => {
+      const scope = job.scope_of_work;
+
+      if (!scope) return empType === "Variable";
+
+      const min = scope.min ?? 0;
+      const max = scope.max ?? 0;
+
+      if (min === 100 && max === 100) return empType === "Full-time";
+      if (max < 100 || (min < 100 && max < 100)) return empType === "Part-time";
+      if (min < 100 && max === 100) return empType === "Variable";
+
+      return false;
+});
+  }
+
+  const minSalary = parseInt(minSalaryInput.value);
+  if (!isNaN(minSalary)) {
+    filtered = filtered.filter(job => job.salary?.median >= minSalary);
+  }
+
+  const sortKey = sortSelect.value;
+  if (sortKey) {
+    filtered.sort((a, b) => {
+      if (sortKey === "salary") {
+        return (b.salary?.median || 0) - (a.salary?.median || 0);
+      }
+      return (a[sortKey] || "").localeCompare(b[sortKey] || "");
+    });
+  }
+
+  return filtered;
+}
+
+sortSelect.addEventListener("change", () => {
+  const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+  renderJobs(applyFiltersAndSort(lastJobs));
+});
+
+employmentFilter.addEventListener("change", () => {
+  const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+  renderJobs(applyFiltersAndSort(lastJobs));
+});
+
+minSalaryInput.addEventListener("input", () => {
+  const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+  renderJobs(applyFiltersAndSort(lastJobs));
+});
 
 function renderJobs(jobs) {
   const query = document.getElementById("q").value.trim();
@@ -135,7 +195,7 @@ const cards = jobs.map(job => `
     resultsEl.innerHTML = `<div class="cards">${cards}</div>`;
 }
 
-const FAVORITES_KEY = "favorites";
+const FAVORITES_KEY = "favoritesContainer";
 
 function getFavorites() {
     return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
@@ -165,7 +225,7 @@ function toggleFavorite(job) {
 }
 
 const toggleBtn = document.getElementById("toggleFavoritesBtn");
-const favContainer = document.getElementById("favorites");
+const favContainer = document.getElementById("favoritesContainer");
 
 toggleBtn.addEventListener("click", () => {
     favContainer.classList.toggle("hidden");
@@ -175,7 +235,7 @@ toggleBtn.addEventListener("click", () => {
 
 function renderFavorites() {
     const favs = getFavorites();
-    const container = document.getElementById("favorites");
+    const container = document.getElementById("favoritesContainer");
 
     if (!favs.length) {
         container.innerHTML = "<p>Inga favoriter ännu.</p>";
@@ -244,7 +304,9 @@ form.addEventListener("submit", async (e) => {
         const salary = salaryJob?.salary ?? null;
 
         renderSalary({q, location, salary});
-        renderJobs(jobs);
+        const lastJobs = JSON.parse(localStorage.getItem("lastResults") || "[]");
+        const filteredJobs = applyFiltersAndSort(lastJobs);
+        renderJobs(filteredJobs);
 
         const updatedEl = document.getElementById("lastUpdated");
   if (updatedEl) {

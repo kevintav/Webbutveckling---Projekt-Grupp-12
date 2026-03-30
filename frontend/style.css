@@ -462,3 +462,23 @@ body.dark .btn-clear {
     background-color: #444;
     color: white;
 }
+.filters-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  background-color: #f1f5f9;
+  padding: 1rem;
+  border-radius: 12px;
+}
+.filters-wrapper label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.filters-wrapper select,
+.filters-wrapper input {
+  padding: 0.3rem 0.5rem;
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+}
