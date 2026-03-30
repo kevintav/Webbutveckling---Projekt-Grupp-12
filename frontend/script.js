@@ -105,8 +105,6 @@ const minSalaryInput = document.getElementById("minSalary");
 function applyFiltersAndSort(jobs) {
   let filtered = [...jobs];
 
-  console.log("Testing");
-
   const empType = employmentFilter.value;
 
   if (empType) {
@@ -118,11 +116,20 @@ function applyFiltersAndSort(jobs) {
       const min = scope.min ?? 0;
       const max = scope.max ?? 0;
 
-      if (min === 100 && max === 100) return empType === "Full-time";
-      if (max < 100 || (min < 100 && max < 100)) return empType === "Part-time";
-      if (min < 100 && max === 100) return empType === "Variable";
+      if (min === 100 && max === 100) {
+        return empType === "Full-time";
+      }
 
-      return false;
+      if (max < 100) {
+        return empType === "Part-time";
+      }
+
+      if (min < 100 && max === 100) {
+        return empType === "Part-time";
+      }
+
+      return empType === "Variable";
+
 });
   }
 
