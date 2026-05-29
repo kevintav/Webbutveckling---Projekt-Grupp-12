@@ -43,6 +43,7 @@ def fetch_jobs(query: str, region_name: str):
             "deadline": job.get("application_deadline"),
             "url": job.get("webpage_url"),
             "ssyk": job.get("occupation_group", {}).get("concept_id"),
+            "description": job.get("description", {}).get("text", "")
         })
 
     return jobs

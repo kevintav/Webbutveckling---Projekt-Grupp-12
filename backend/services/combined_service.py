@@ -69,7 +69,8 @@ async def fetch_combined_jobs(query: str, region: str) -> list[dict]:
             "ssyk": job.get("ssyk"),
             "scope_of_work": job.get("scope_of_work"), 
             "employment_type": job.get("employment_type"), 
-            "deadline": job.get("deadline")
+            "deadline": job.get("deadline"),
+            "published": job.get("published")
         })
 
     return combined

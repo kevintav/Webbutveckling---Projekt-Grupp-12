@@ -489,3 +489,25 @@ body.dark .btn-clear {
   color: #dc2626;
   font-weight: 600;
 }
+
+.published {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #26dc51;
+  font-weight: 600;
+}
+
+.skills {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.skill-tag {
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}

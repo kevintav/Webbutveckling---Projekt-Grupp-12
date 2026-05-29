@@ -144,7 +144,13 @@ function applyFiltersAndSort(jobs) {
       if (sortKey === "salary") {
         return (b.salary?.median || 0) - (a.salary?.median || 0);
       }
-      return (a[sortKey] || "").localeCompare(b[sortKey] || "");
+      if (sortKey === "published") {
+        return new Date(b.published || 0) - new Date(a.published || 0);
+      }
+      if (sortKey === "deadline") {
+        return new Date(a.deadline || "9999-12-31") - new Date(b.deadline || "9999-12-31");
+      }
+        return (a[sortKey] || "").localeCompare(b[sortKey] || "");
     });
   }
 
@@ -185,6 +191,8 @@ function renderJobs(jobs) {
 
 const cards = jobs.map(job => `
   <article class="job-card">
+    ${job.published ? `<span class="published"> Publicerad: ${new Date(job.published).toLocaleDateString("sv-SE")} </span> ` : ""}
+
     <div class="job-title">${job.title ?? "Okänd titel"}</div>
 
     <div class="job-meta">
@@ -193,6 +201,15 @@ const cards = jobs.map(job => `
 
       ${job.deadline ? `<div class="deadline">Ansök innan: ${new Date(job.deadline).toLocaleDateString("sv-SE")} </div> ` : ""}
     </div>
+    ${(() => {
+      const matched = getMatchingSkills(job, query);
+
+      return matched.length ? `
+        <div class="skills">
+          ${matched.map(s => `<span class="skill-tag">${s}</span>`).join("")}
+        </div>
+      ` : "";
+    })()}
 
     <div class="job-actions">
       ${job.url ? `<a href="${job.url}" target="_blank">Öppna annons</a>` : ""}
@@ -402,4 +419,16 @@ window.addEventListener("load", () => {
     renderFavorites();
 });
 
+function getMatchingSkills(job, query) {
+  const skills = query.toLowerCase().split(" ");
+
+  const text = `
+    ${job.title ?? ""}
+    ${job.employer ?? ""}
+    ${job.location ?? ""}
+    ${job.description ?? ""}
+  `.toLowerCase();
+
+  return skills.filter(skill => text.includes(skill));
+}
 
