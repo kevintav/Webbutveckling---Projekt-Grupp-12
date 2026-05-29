@@ -40,8 +40,10 @@ def fetch_jobs(query: str, region_name: str):
             "scope_of_work": job.get("scope_of_work"),
             "Working_hours_type": job.get("working_hours_type"),
             "published": job.get("timestamp"),
+            "deadline": job.get("application_deadline"),
             "url": job.get("webpage_url"),
-            "ssyk": job.get("occupation_group", {}).get("concept_id")
+            "ssyk": job.get("occupation_group", {}).get("concept_id"),
+            "description": job.get("description", {}).get("text", "")
         })
 
     return jobs
