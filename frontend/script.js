@@ -190,6 +190,8 @@ const cards = jobs.map(job => `
     <div class="job-meta">
       ${job.employer ? `<span class="badge">${job.employer}</span>` : ""}
       ${job.location ? `<span>• ${job.location}</span>` : ""}
+
+      ${job.deadline ? `<div class="deadline">Ansök innan: ${new Date(job.deadline).toLocaleDateString("sv-SE")} </div> ` : ""}
     </div>
 
     <div class="job-actions">

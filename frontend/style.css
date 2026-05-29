@@ -482,3 +482,10 @@ body.dark .btn-clear {
   margin-top: 0.2rem;
   font-size: 0.9rem;
 }
+
+.deadline {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #dc2626;
+  font-weight: 600;
+}
